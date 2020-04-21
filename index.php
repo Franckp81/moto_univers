@@ -9,6 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="/BurgerCode/bootstrap/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="css/styles.css">
 
 
@@ -33,7 +34,7 @@
             
             $categories = $statement->fetchAll();
          
-            echo '<a id="accueil" class="nav-item nav-link active" href="#" data-toggle="tab">' . 'Accueil'  . '</a>';
+            echo '<a  class="nav-item nav-link active" href="#tab1" data-toggle="tab">' . 'Accueil'  . '</a>';
 
             foreach($categories as $category){
                 
@@ -45,6 +46,8 @@
                                                                                                         //  AFFICHAGE DES ELEMENTS 
 
             echo '<div class="tab-content">';
+           echo  '<div class="tab-pane active" id="tab1">Vous pouvez consulter le détail du programme</div>';
+
 
             foreach($categories as $category){
                 
@@ -57,12 +60,14 @@
                 while($item = $statement->fetch()){
 
                     echo '<div class="col-sm-6 col-md-4">',
+                                        
                             '<div class="img-thumbnail">',
+
+                            
                                 '<img src="images/' . $item['image'] . '" class="img-fluid max-width: 100%" alt="">',
                               
                                 '<div class="caption">',
                                     '<h4>'. $item['name'] . '</h4>',
-                                    '<p>' . $item['description'] . '</p>',
                                     '<a href="#" class="btn btn-primary orange" role="button">Voir</a>',
                                 '</div>',
                             '</div>' ,
