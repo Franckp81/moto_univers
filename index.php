@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="/BurgerCode/bootstrap/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 
 
@@ -46,29 +46,37 @@
                                                                                                         //  AFFICHAGE DES ELEMENTS 
 
             echo '<div class="tab-content">';
-           echo  '<div class="tab-pane active" id="tab1">Vous pouvez consulter le détail du programme</div>';
+           
+            echo  '<div class="tab-pane active" id="tab1"><a align"center" id="inscription" href="inscription.php">Pas encore inscrit ? cliquez ici !</a>' . '   Sinon   ' . '<a align"center" id="login" href="login.php">Connectez-vous!</a>' . '<br><br>',
+                    '<h2 align="center">Bienvenue sur le site Moto-Univers</h2><br>',
+                    '<img src="images/harley.jpg"  class="img-fluid max-width: 100%" alt="">',
+            '</div>';
+
 
 
             foreach($categories as $category){
                 
                 echo '<div class="tab-pane fade show" id="p' . $category['id'] . '"> ';
+                 echo '<a href="admin/insert.php" class="btn btn-secondary" role="button">+ Ajouter</a><br><br>';
                 
                 echo '<div class="row">';
                 $statement = $db->prepare('SELECT * FROM items WHERE items.category = ?');
                     $statement->execute(array($category['id'])); // Je parcours toutes les catégories de tous mes items, une boucle dans une boucle.
-                
+               
                 while($item = $statement->fetch()){
+
+                    
 
                     echo '<div class="col-sm-6 col-md-4">',
                                         
-                            '<div class="img-thumbnail">',
+                            '<div class="img-thumbnail" align="center" >',
 
                             
-                                '<img src="images/' . $item['image'] . '" class="img-fluid max-width: 100%" alt="">',
+                                '<img src="images/' . $item['image'] . '" class="img-fluid max-width: 100% alt=""><br>',
                               
                                 '<div class="caption">',
                                     '<h4>'. $item['name'] . '</h4>',
-                                    '<a href="#" class="btn btn-primary orange" role="button">Voir</a>',
+                                    '<a class="btn btn-secondary" href="view.php?id=' . $item['id'] . '" role="button">Voir</a>',
                                 '</div>',
                             '</div>' ,
                         '</div>';                
@@ -77,6 +85,10 @@
                     '</div>';
                 
             }
+
+           
+
+
             Database::disconnect();
 
             echo '</div>';

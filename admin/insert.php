@@ -139,7 +139,7 @@ function checkInput($data)
 
             </div>
         </div>
-
+    </div>                  
 </body>
 
 </html>

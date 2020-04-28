@@ -1,4 +1,6 @@
 <?php
+
+
 require 'database.php';
 
 if (!empty($_GET['id'])) {
@@ -36,7 +38,7 @@ function checkInput($data)
 
 
 
-    <title> Moto univers</title>
+    <title>Moto univers</title>
 </head>
 
 <body>
@@ -47,7 +49,7 @@ function checkInput($data)
 
             <div class="col-sm-6 ">
                 <!--Les deux divs permettent de créer deux parties pour l'affichage-->
-                <h1>Voir un item </h1>
+                <h1>Voir un item</h1>
                 <br>
                 <form class="site">
                     <div class="form-group">
@@ -76,7 +78,7 @@ function checkInput($data)
                                 clip-rule="evenodd" />
                             <path
                                 d="M13.293 1.207a1 1 0 011.414 0l.03.03a1 1 0 01.03 1.383L13.5 4 12 2.5l1.293-1.293z" />
-                        </svg> Retour</a>
+                        </svg>Retour</a>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 site">

@@ -43,7 +43,7 @@ function checkInput($data)
 
 
 
-    <title> Moto univers</title>
+    <title>Moto univers</title>
 </head>
 
 <body>
