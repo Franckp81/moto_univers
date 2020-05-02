@@ -53,7 +53,9 @@ a:focus {
   background-color: rgba(51, 54, 87, 0.938);
   text-decoration: none;
 }
-
+#tab1nolog{
+  margin-top: 25px;
+}
 
 /* ADMIN */
 .container.admin {

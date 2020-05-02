@@ -35,12 +35,13 @@
             $passwordError = "Ce champ ne peut pas être vide ";
             $isSuccess = false;
         }
+        $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
         if($isSuccess) 
             {
                 $db = Database::connect();
                 $statement = $db->prepare("INSERT INTO users (lastname,firstname,pseudo,email,password) values(?, ?, ?, ?,?)");
-                $statement->execute(array($lastname,$firstname,$pseudo,$email,$password));
+                $statement->execute(array($lastname,$firstname,$pseudo,$email,$pass_hache));
                 Database::disconnect();
                 header("Location: index.php"); // Fonction permettant de revenir à la page index.php une fois l'insertion faite dans la base de données pour vérifier l'ajout dans la liste des items.
             }

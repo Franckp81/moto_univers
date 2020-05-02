@@ -52,7 +52,7 @@ function checkInput($data)
     <div class="container admin">
         <div class="row">
             <div class="col-sm-12 ">
-                <h1>Supprimer un item </h1>
+                <h2>Supprimer un item </h2>
                 <br>
                 <form action="delete.php" class="form" method="POST" role="form">
                    <input type="hidden" name="id" value="<?php echo $id ?>"></input> <!--Récupére la valeur de mon ID du POST dans un input invisible à l'utilisateur.-->

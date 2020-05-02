@@ -1,13 +1,63 @@
 <?php
 
-session_start();
+
 
 require 'admin/database.php';
 
-$pseudo = $password = $pseudoError = $passwordError = ""; // Initialise mes variables pour la première visite de la page.
+$pseudo = $password = $pseudoError = $passwordError = $login = ""; // Initialise mes variables pour la première visite de la page.
+
+if (!empty($_POST)) {
+    $pseudo = checkInput($_POST['pseudo']);
+    $password = checkInput($_POST['password']);
+    $isSuccess = true;
 
 
 
+    if (empty($pseudo)) { // Suite de if pour vérifier si les champs sont vide et afficher une erreur si c'est le cas.
+        $pseudoError = "Ce champ ne peut pas être vide ";
+        $isSuccess = false;
+    }
+    if (empty($password)) {
+        $passwordError = "Ce champ ne peut pas être vide ";
+        $isSuccess = false;
+    }
+
+
+//  Récupération de l'utilisateur et de son pass hashé
+$db = Database::connect();
+$req = $db->prepare('SELECT id, password FROM users WHERE pseudo = :pseudo');
+$req->execute(array(
+    'pseudo' => $pseudo));
+$resultat = $req->fetch();
+
+// Comparaison du pass envoyé via le formulaire avec la base
+$isPasswordCorrect = password_verify($_POST['password'], $resultat['password']);
+
+if (!$resultat)
+{
+    $login = "Mauvais identifiant ou mot de passe !";
+}
+else
+{
+    if ($isPasswordCorrect) {
+        session_start();
+        $_SESSION['id'] = $resultat['id'];
+        $_SESSION['pseudo'] = $pseudo;
+       // echo 'Vous êtes connecté !';
+       header("Location: index.php");
+    }
+    else {
+        $login = "Mauvais identifiant ou mot de passe !";;
+    }
+}
+}
+function checkInput($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    };
 
 ?>
 
@@ -46,7 +96,7 @@ $pseudo = $password = $pseudoError = $passwordError = ""; // Initialise mes vari
                     </div>
                     <div class="form-group">
                         <label for="firstname">Mot de passe:</label>
-                        <input type="text" class="form-control" id="password" name="password"
+                        <input type="password" class="form-control" id="password" name="password"
                             placeholder="Votre mot de passe" value="<?php echo $password; ?>">
                         <span class="help-inline"><?php echo $passwordError; ?></span>
                     </div>
@@ -55,6 +105,8 @@ $pseudo = $password = $pseudoError = $passwordError = ""; // Initialise mes vari
                         <button type="submit" class="btn btn-success">Go!</button>
                         <a class="btn btn-info" role="button" href="index.php"> Retour</a>
                     </div>
+                    <br>
+                    <div class="help-inline"><?php echo $login ?></div>
                 </form>
             </div>
         </div>

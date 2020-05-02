@@ -133,7 +133,7 @@ function checkInput($data)
                     <br>
                     <div class="form-actions">
                         <button type="submit" class="btn btn-success"> Ajouter</button>
-                        <a class="btn btn-info" role="button" href="index.php"> Retour</a>
+                        <a class="btn btn-info" role="button" href="../index.php"> Retour</a>
                     </div>
                 </form>
 

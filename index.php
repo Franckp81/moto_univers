@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -22,9 +24,10 @@
 
         <h1 class="text-logo"> Moto Univers </h1>
 
+
         <?php
 
-            require 'admin/database.php'; // Va rendre mon menu de navigation dynamique
+      require 'admin/database.php'; // Va rendre mon menu de navigation dynamique
 
 
             echo   '<nav class="nav nav-tabs">';
@@ -36,28 +39,46 @@
          
             echo '<a  class="nav-item nav-link active" href="#tab1" data-toggle="tab">' . 'Accueil'  . '</a>';
 
+           
+            if(!empty($_SESSION['pseudo']))
+            {   
             foreach($categories as $category){
                 
                     echo ' <a class="nav-item nav-link" href="#p' . $category['id'] . '" data-toggle="tab">' . $category['name'] . '</a>';
                 
             }
+       
             echo '</nav>';
 
-                                                                                                        //  AFFICHAGE DES ELEMENTS 
+            //  AFFICHAGE DES ELEMENTS  
 
-            echo '<div class="tab-content">';
-           
-            echo  '<div class="tab-pane active" id="tab1"><a align"center" id="inscription" href="inscription.php">Pas encore inscrit ? cliquez ici !</a>' . '   Sinon   ' . '<a align"center" id="login" href="login.php">Connectez-vous!</a>' . '<br><br>',
-                    '<h2 align="center">Bienvenue sur le site Moto-Univers</h2><br>',
+                echo '<div class="tab-content">';
+          
+                    echo '<div class="tab-pane active" id="tab1">' .'Bonjour ' . $_SESSION['pseudo'] . ' ' .'<a align"center" id="inscription" href="disconnect.php">Deconnexion</a><br><br>';
+                    echo     '<h2 align="center">Bienvenue sur le site Moto-Univers</h2><br>',
                     '<img src="images/harley.jpg"  class="img-fluid max-width: 100%" alt="">',
             '</div>';
-
-
-
+    
+            }else{
+                 
+                    echo  '<div class="tab-pane active" id="tab1nolog"><a align"center" id="inscription" href="inscription.php">Pas encore inscrit ? cliquez ici !</a>' . '   Sinon   ' . '<a align"center" id="login" href="login.php">Connectez-vous!</a>' . '<br><br>';
+                
+                echo     '<h2 align="center">Bienvenue sur le site Moto-Univers</h2><br>',
+                        '<img src="images/harley.jpg"  class="img-fluid max-width: 100%" alt="">',
+                '</div>';
+             
+            }
+            
+            if(!empty($_SESSION['pseudo']))
+            { 
             foreach($categories as $category){
                 
                 echo '<div class="tab-pane fade show" id="p' . $category['id'] . '"> ';
-                 echo '<a href="admin/insert.php" class="btn btn-secondary" role="button">+ Ajouter</a><br><br>';
+                echo '<a href="admin/insert.php" class="btn btn-secondary" role="button">+ Ajouter</a><br><br>';
+
+                echo '<form action="trombi.php" method="get">',
+                    '<p align="center"><input placeholder="Votre recherche..." type="text" name="q"/><input type="submit" value="OK"></p>,
+                    </form>';
                 
                 echo '<div class="row">';
                 $statement = $db->prepare('SELECT * FROM items WHERE items.category = ?');
@@ -83,10 +104,9 @@
                 }
                 echo    '</div>',
                     '</div>';
-                
+                }
             }
-
-           
+            
 
 
             Database::disconnect();
