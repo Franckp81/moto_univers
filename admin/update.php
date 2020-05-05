@@ -129,7 +129,7 @@ function checkInput($data)
     <div class="container admin">
         <div class="row">
             <div class="col-sm-6">
-                <h1>Modifier un item </h1>
+                <h1>Modifier un élément </h1>
                 <br>
                 <form action="<?php echo 'update.php?id=' . $id; ?>" class="form" method="POST" role="form" enctype="multipart/form-data"> <!--L'echo par la méthode POST me permet de récupérer les données de l'élément à la redirection de la page.-->
                    

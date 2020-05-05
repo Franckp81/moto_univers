@@ -24,14 +24,16 @@ if (!empty($_POST)) {
 
 
 //  Récupération de l'utilisateur et de son pass hashé
-$db = Database::connect();
-$req = $db->prepare('SELECT id, password FROM users WHERE pseudo = :pseudo');
-$req->execute(array(
-    'pseudo' => $pseudo));
-$resultat = $req->fetch();
 
-// Comparaison du pass envoyé via le formulaire avec la base
-$isPasswordCorrect = password_verify($_POST['password'], $resultat['password']);
+    $db = Database::connect();
+    $req = $db->prepare('SELECT pseudo, id, password FROM users WHERE pseudo = :pseudo');
+    $req->execute(array(
+        'pseudo' => $pseudo));
+    $resultat = $req->fetch();
+
+    // Comparaison du pass envoyé via le formulaire avec la base
+    $isPasswordCorrect = password_verify($_POST['password'], $resultat['password']);
+    
 
 if (!$resultat)
 {
@@ -97,7 +99,7 @@ function checkInput($data)
                         <span class="help-inline"><?php echo $pseudoError; ?></span>
                     </div>
                     <div class="form-group">
-                        <label for="firstname">Mot de passe:</label>
+                        <label for="password">Mot de passe:</label>
                         <input type="password" class="form-control" id="password" name="password"
                             placeholder="Votre mot de passe" value="<?php echo $password; ?>">
                         <span class="help-inline"><?php echo $passwordError; ?></span>

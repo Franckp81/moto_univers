@@ -101,7 +101,7 @@ function checkInput($data)
     <div class="container admin">
         <div class="row">
             <div class="col-sm-12 ">
-                <h1>Ajouter un item </h1>
+                <h1>Ajouter un élément </h1>
                 <br>
                 <form action="insert.php" class="form" method="POST" role="form" enctype="multipart/form-data">
                     <!--ectype permet de découper le formulaire en plusieurs partie pour alléger la requête http.-->
