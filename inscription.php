@@ -104,19 +104,19 @@
                         <span class="help-inline"><?php echo $firstnameError; ?></span>
                     </div>
                     <div class="form-group">
-                        <label for="prenom">Pseudo:</label>
+                        <label for="pseudo">Pseudo:</label>
                         <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Votre pseudo"
                             value="<?php echo $pseudo; ?>">
                         <span class="help-inline"><?php echo $pseudoError; ?></span>
                     </div>
                     <div class="form-group">
-                        <label for="prenom">Email:</label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Votre email"
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Votre email"
                             value="<?php echo $email; ?>">
                         <span class="help-inline"><?php echo $emailError; ?></span>
                     </div>
                     <div class="form-group">
-                        <label for="prenom">Mot de passe:</label>
+                        <label for="password">Mot de passe:</label>
                         <input type="password" class="form-control" id="password" name="password"
                             placeholder="Votre mot de passe" value="<?php echo $password; ?>">
                         <!-- Le type password va permettre de cacher le mdp à l'écran -->

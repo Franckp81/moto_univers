@@ -79,7 +79,7 @@
                                     '<h2 align="center">Contactez-moi</h2>',
                                 '</div>',
                                     '<div class="col-md-6">',
-                                        '<label for="firstname">Prénom <span class="blue">*</span></label>',//<!--Le span va permettre de mettre que l'astérisque en bleu en CSS-->
+                                        '<label for="firstname">Prénom <span class="blue">*</span></label>',
                                         '<input id="firstname" type="text" name="firstname" class="form-control" placeholder="Votre prénom">',// <!--Placeolder pour le texte grisé dans le champ-->
                                         '<p class="comments"></p>',
                                     '</div>',
