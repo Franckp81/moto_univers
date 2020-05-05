@@ -36,12 +36,8 @@ body {
   color: rgba(53, 53, 53, 0.89);
   font-size: 18px;
 }
-nav{
-  margin: 0 auto;
-}
 nav.nav.nav-tabs {
   width: 100%;
-  
 }
 a:hover,
 a,
