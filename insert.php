@@ -1,6 +1,8 @@
 <?php
 
-require 'database.php';
+session_start();
+
+require 'admin/database.php';
 
 $nameError = $descriptionError = $categoryError = $imageError = $name = $description = $category = $image = ""; // Initialise mes variables pour la première visite de la page.
 
@@ -9,7 +11,7 @@ if (!empty($_POST)) {
     $description = checkInput($_POST['description']); // Toutes ses lignes me permettent de sécuriser les données entrantes de l'utilisateur.
     $category = checkInput($_POST['category']);
     $image = checkInput($_FILES['image']['name']); // Récupère le nom de l'image 
-    $imagePath = '../images/' . basename($image); // Récupère le chemin de l'image
+    $imagePath = 'images/' . basename($image); // Récupère le chemin de l'image
     $imageExtension = pathinfo($imagePath, PATHINFO_EXTENSION); // Me récupère l'extention de l'image (jpg, png, etc).
     $isSuccess = true; // Me permettra de définir si mon formulaire a bien était renseigné.
     $isUploadSuccess = false; // Me permettra de voir si le téléchargement de mon image est réussi.
@@ -81,13 +83,13 @@ function checkInput($data)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 
 
     <title> Moto univers</title>
@@ -110,7 +112,7 @@ function checkInput($data)
                     </div>
                     <div class="form-group">
                         <label for="description">Description:</label>
-                        <input type="text" class="form-control" id="description" name="description" placeholder="Description" value="<?php echo $description; ?>">
+                        <textarea type="text" class="form-control" id="description" name="description" placeholder="Description"><?php echo $description; ?></textarea>
                         <span class="help-inline"><?php echo $descriptionError; ?></span>
                     </div>
                     <div class="form-group">
@@ -135,7 +137,7 @@ function checkInput($data)
                     <br>
                     <div class="form-actions">
                         <button type="submit" class="btn btn-success"> Ajouter</button>
-                        <a class="btn btn-info" role="button" href="../index.php"> Retour</a>
+                        <a class="btn btn-info" role="button" href="index.php"> Retour</a>
                     </div>
                 </form>
 

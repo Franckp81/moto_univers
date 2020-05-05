@@ -41,7 +41,7 @@ header("Location: index.php");
     <div class="container admin site">
         <div class="row">
             <div class="col-sm-12 ">
-            <h2>Deconnection</h2>
+            <h2>Déconnexion</h2>
                 <br>
                 <form action="disconnect.php" class="form" method="POST" role="form">
                    <input type="hidden" name="id" value="id"></input>  <!--Récupére la valeur de mon ID du POST dans un input invisible à l'utilisateur. -->

@@ -2,7 +2,7 @@
 
 class Database{
 
-    private static $dbHost = "localhost"; // Rend les variables privée pour seulement la class Database
+    private static $dbHost = "localhost"; // Rend les variables privée pour être accessible seulement par la classe Database
     private static $dbName = "moto_univers";
     private static $dbUser = "root";
     private static $dbUserPassword = "";
@@ -26,33 +26,6 @@ class Database{
         self::$connection = null;
     }
 }
-
-function getAllUsers($pFilter)
-{
-    // Rempli un tableau avec les résultats positifs, et retourne ce tableau 
-    $lTrombi = [];
-    try 
-    {
-        $db = Database::connect();
-        // requête à la BDD avec le filtre sur le nom et prénom
-        foreach($db->query("SELECT * from items WHERE name LIKE '%$pFilter%' OR  Prenom LIKE '%$pFilter%' ") as $row) 
-        {
-            // on rempli le tableau
-            array_push($lTrombi, $row);
-        }
-        // déconnexion
-        $lBdd = null;
-    } 
-    catch (PDOException $e) 
-    {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
-    }
-
-    // le tableau (complet, semi-rempli ou vide)
-    return  $lTrombi;
-}
-
-
 
 Database::connect();
 

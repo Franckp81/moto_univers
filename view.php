@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 require 'admin/database.php';
 
 if (!empty($_GET['id'])) {

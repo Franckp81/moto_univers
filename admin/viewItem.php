@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 
 require 'database.php';
 
@@ -39,7 +40,6 @@ function checkInput($data)
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
 
-
     <title> Moto univers</title>
 </head>
 
@@ -51,21 +51,21 @@ function checkInput($data)
 
             <div class="col-sm-6 ">
                 <!--Les deux divs permettent de créer deux parties pour l'affichage-->
-                <h1>Voir un item</h1>
+                <h1>Vue d'un élément</h1>
                 <br>
-                <form class="site">
+                <form>
                     <div class="form-group">
-                        <label>Nom:</label><?php echo '  ' . $item['name']; ?>
+                        <label><strong>Nom:</strong></label><br><?php echo '  ' . $item['name']; ?>
                     </div>
                     <div class="form-group">
-                        <label>Description:</label><?php echo '  ' . $item['description']; ?>
+                        <label><strong>Description:</strong></label><br><?php echo '  ' . $item['description']; ?>
                     </div>
                   
                     <div class="form-group">
-                        <label>Catégorie:</label><?php echo '  ' . $item['category']; ?>
+                        <label><strong>Catégorie:</strong></label><br><?php echo '  ' . $item['category']; ?>
                     </div>
                     <div class="form-group">
-                        <label>Image:</label><?php echo '  ' . $item['image']; ?>
+                        <label><strong>Image:</strong></label><br><?php echo '  ' . $item['image']; ?>
                     </div>
                 </form>
                 </form>
@@ -83,14 +83,13 @@ function checkInput($data)
                         </svg>Retour</a>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 site">
+            <div class="col-sm-6 col-md-4">
                 <div class="img-thumbnail">
                     <img class="img-fluid max-width: 100%" src=" <?php echo '../images/' . $item['image']; ?>"
                         alt="...">
-                    <div class="caption">
-                        <h4><?php echo $item['name']; ?></h4>
+                    <div class="caption"><br>
+                        <h4 align="center"><?php echo $item['name']; ?></h4>
                         <p><?php echo $item['description']; ?></p>
-                        <!-- <a href="#" class="btn btn-primary orange" role="button">Commander</a> -->
                     </div>
                 </div>
             </div>

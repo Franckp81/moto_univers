@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require 'database.php';
 
 if(!empty($_GET['id'])){ // Première visite sur la page.
@@ -92,9 +94,6 @@ else{ // Correspond au premier passage dans ma page et au remplissage des donné
     Database::disconnect();
 }
 
-
-
-
 function checkInput($data)
 {
     $data = trim($data);
@@ -141,7 +140,7 @@ function checkInput($data)
                     </div>
                     <div class="form-group">
                         <label for="description">Description:</label>
-                        <input type="text-area" class="form-control" id="description" name="description" placeholder="Description" value="<?php echo $description; ?>">
+                        <textarea type="text" class="form-control" id="description" name="description" placeholder="Description"><?php echo $description; ?></textarea>
                         <span class="help-inline"><?php echo $descriptionError; ?></span>
                     </div>
                     <div class="form-group">

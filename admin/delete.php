@@ -15,9 +15,6 @@ if (!empty($_POST)) { // Deuxième passage
     header("Location: index.php"); // Retour sur la page index.php après la suppression.
 }
 
-
-
-
 function checkInput($data)
 {
     $data = trim($data);
@@ -27,7 +24,6 @@ function checkInput($data)
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -54,11 +50,11 @@ function checkInput($data)
     <div class="container admin">
         <div class="row">
             <div class="col-sm-12 ">
-                <h2>Supprimer un item </h2>
+                <h2>Suppression d'un élément </h2>
                 <br>
                 <form action="delete.php" class="form" method="POST" role="form">
                    <input type="hidden" name="id" value="<?php echo $id ?>"></input> <!--Récupére la valeur de mon ID du POST dans un input invisible à l'utilisateur.-->
-                    <p class="alert alert-warning">Etes vous sur de vouloir supprimer ?</p>
+                    <p class="alert alert-warning">Etes vous sur de vouloir supprimer cet élément ?</p>
                     <div class="form-actions">
                         <button type="submit" class="btn btn-warning"> Oui</button>
                         <a class="btn btn-default noDelete" role="button" href="index.php"> Non</a>
