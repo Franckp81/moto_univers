@@ -22,14 +22,14 @@
     <link rel="stylesheet" href="css/styles.css">
 
 
-    <title> Moto univers</title>
+    <title> Moto-Univers</title>
 </head>
 
 <body>
 
     <div class="container site">
 
-        <h1 class="text-logo"> Moto Univers </h1>
+        <h1 class="text-logo">Moto Univers </h1>
 
 
         <?php
