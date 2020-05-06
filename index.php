@@ -1,4 +1,10 @@
-<?php session_start() ?>
+<?php
+
+session_start(); 
+
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -11,26 +17,27 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
         integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js"></script>
 
 
-    <title> Moto univers</title>
+    <title>Moto Univers</title>
 </head>
 
 <body>
 
     <div class="container site">
 
-        <h1 class="text-logo"> Moto Univers dev</h1>
-
+        <h1 class="text-logo">Moto Univers</h1>
 
         <?php
 
@@ -45,6 +52,7 @@
             $categories = $statement->fetchAll();
          
             echo '<a  class="nav-item nav-link active" href="#tab1" data-toggle="tab">' . 'Accueil'  . '</a>';
+            
            
             if(!empty($_SESSION['pseudo']))
             {   
@@ -62,58 +70,106 @@
           
                     echo '<div class="tab-pane active" id="tab1">' .'Bonjour ' . $_SESSION['pseudo'] . ' ' .'<a align"center" id="inscription" href="disconnect.php">Deconnexion</a><br><br>';
                     echo    '<h2 align="center">Bienvenue sur le site Moto-Univers</h2><br>',
+                            'Pour toute demande ou conseil n\'hésitez pas à me ' . '<a   href="#contact-form">' . 'contacter' .' !' .  '</a><br><br>',
                             '<img src="images/harley.jpg" class="img-fluid imgAccueil" alt=""><br><br>',
-                        '</div>';
-    
-            }else{
-                 
-                echo  '<div class="tab-pane active" id="tab1nolog"><a align"center" id="inscription" href="inscription.php">Pas encore inscrit ? cliquez ici !</a>' . '   Sinon   ' . '<a align"center" id="login" href="login.php">Connectez-vous!</a>' . '<br><br>';
-            
-                echo    '<h2 align="center">Bienvenue sur le site Moto-Univers</h2><br>',
-                        '<img src="images/harley.jpg" class="img-fluid imgAccueil"  alt=""><br><br>',
-                        '<div class="col-sm-12">',
-                        '<form id="contact-form" method="post" action="" role="form">',
-                            '<div class="row">',
-                                '<div class="col-sm-10 offset-1 bgForm" align="center" >',
-                                    '<div class="col-sm-12"><br>',
-                                    '<h2 align="center">Contactez-moi</h2>',
-                                '</div>',
+                            
+                            '<div class="col-sm-12" >',
+
+                            '<form id="contact-form" method="post" action="" role="form">',
+                                '<div class="row">',
+                                    '<div class="col-sm-10 offset-1 bgForm" align="center" >',
+                                        '<div class="col-sm-12"><br>',
+                                        '<h2 align="center">Contactez-moi</h2>',
+                                    '</div>',
                                     '<div class="col-md-6">',
-                                        '<label for="firstname">Prénom <span class="blue">*</span></label>',
+                                        '<label for="firstname">Prénom <span class="white">*</span></label>',
                                         '<input id="firstname" type="text" name="firstname" class="form-control" placeholder="Votre prénom">',// <!--Placeolder pour le texte grisé dans le champ-->
-                                        '<p class="comments"></p>',
+                                        '<p class="comments white"></p>',
                                     '</div>',
                                     '<div class="col-md-6">',
-                                        '<label for="lastname">Nom <span class="blue">*</span></label>',
-                                        '<input id="lastname" type="text" name="lastname" class="form-control" placeholder="Votre nom">',
-                                        '<p class="comments"></p>',
+                                        '<label for="name">Nom <span class="white">*</span></label>',
+                                        '<input id="name" type="text" name="name" class="form-control" placeholder="Votre nom">',
+                                        '<p class="comments white"></p>',
                                     '</div>',
                                     '<div class="col-md-6">',
-                                        '<label for="email">Email <span class="blue">*</span></label>',
+                                        '<label for="email">Email <span class="white">*</span></label>',
                                         '<input id="email" type="text" name="email" class="form-control" placeholder="Votre Email">',
-                                        '<p class="comments"></p>',
+                                        '<p class="comments white"></p>',
                                     '</div>',
                                     '<div class="col-md-6">',
                                         '<label for="phone">Téléphone</label>',
                                         '<input id="phone" type="tel" name="phone" class="form-control" placeholder="Votre Téléphone">', //Renseigner le type "tel" permet notamment sur mobile d'afficher que le clavier numérique sans l'alphabet.
-                                        '<p class="comments"></p>',
+                                        '<p class="comments white"></p>',
                                     '</div>',
                                     '<div class="col-md-10">',
-                                        '<label for="message">Message <span class="blue">*</span></label>',
+                                        '<label for="message">Message <span class="white">*</span></label>',
                                         '<textarea id="message" name="message" class="form-control" placeholder="Votre Message" rows="4"></textarea>',
-                                        '<p class="comments"></p>',
+                                        '<p class="comments white"></p>',
                                     '</div>',
                                     '<div class="col-md-12">',
-                                        '<p class="blue"><strong>* Ces informations sont requises.</strong></p>',
+                                        '<strong class="white">* Ces informations sont requises.</strong></p>',
                                     '</div>',
                                     '<div class="col-md-12">',
-                                        '<input type="submit" class="button1" value="Envoyer">',
+                                        '<input type="submit" class="btn btn-info" value="Envoyer">',
                                     '</div><br>',
-                                '</div>',   
-                            '</div>',
-                        '</form>',
-                    '</div><br>',
-                '</div>';
+                                    '</div>',   
+                                '</div>',
+                            '</form>',
+                        '</div><br>',
+
+                         '</div>';
+    
+            } else{
+                 
+                echo  '<div class="tab-pane active" id="tab1nolog"><a align"center" id="inscription" href="inscription.php">Pas encore inscrit ? cliquez ici !</a>' . '   Sinon   ' . '<a align"center" id="login" href="login.php">Connectez-vous!</a>' . '<br><br>';
+                
+                echo    '<h2 align="center">Bienvenue sur le site Moto-Univers</h2><br>',
+                        'Pour toute demande ou conseil n\'hésitez pas à me ' . '<a   href="#contact-form">' . 'contacter' .' !' .  '</a><br><br>',
+                        '<img src="images/harley.jpg" class="img-fluid imgAccueil"  alt=""><br><br>',
+                        '<div class="col-sm-12" >',
+
+                            '<form id="contact-form" method="post" action="" role="form">',
+                                '<div class="row">',
+                                    '<div class="col-sm-10 offset-1 bgForm" align="center" >',
+                                        '<div class="col-sm-12"><br>',
+                                        '<h2 align="center">Contactez-moi</h2>',
+                                    '</div>',
+                                    '<div class="col-md-6">',
+                                        '<label for="firstname">Prénom <span class="white">*</span></label>',
+                                        '<input id="firstname" type="text" name="firstname" class="form-control" placeholder="Votre prénom">',// <!--Placeolder pour le texte grisé dans le champ-->
+                                        '<p class="comments white"></p>',
+                                    '</div>',
+                                    '<div class="col-md-6">',
+                                        '<label for="name">Nom <span class="white">*</span></label>',
+                                        '<input id="name" type="text" name="name" class="form-control" placeholder="Votre nom">',
+                                        '<p class="comments white"></p>',
+                                    '</div>',
+                                    '<div class="col-md-6">',
+                                        '<label for="email">Email <span class="white">*</span></label>',
+                                        '<input id="email" type="text" name="email" class="form-control" placeholder="Votre Email">',
+                                        '<p class="comments white"></p>',
+                                    '</div>',
+                                    '<div class="col-md-6">',
+                                        '<label for="phone">Téléphone</label>',
+                                        '<input id="phone" type="tel" name="phone" class="form-control" placeholder="Votre Téléphone">', //Renseigner le type "tel" permet notamment sur mobile d'afficher que le clavier numérique sans l'alphabet.
+                                        '<p class="comments white"></p>',
+                                    '</div>',
+                                    '<div class="col-md-10">',
+                                        '<label for="message">Message <span class="white">*</span></label>',
+                                        '<textarea id="message" name="message" class="form-control" placeholder="Votre Message" rows="4"></textarea>',
+                                        '<p class="comments white"></p>',
+                                    '</div>',
+                                    '<div class="col-md-12">',
+                                        '<strong class="white">* Ces informations sont requises.</strong></p>',
+                                    '</div>',
+                                    '<div class="col-md-12">',
+                                        '<input type="submit" class="btn btn-info" value="Envoyer">',
+                                    '</div><br>',
+                                    '</div>',   
+                                '</div>',
+                            '</form>',
+                        '</div><br>',
+                    '</div>';
             
             }
             

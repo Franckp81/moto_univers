@@ -2,7 +2,7 @@ body {
   background-image: url(../images/bg.jpg);
 }
 .site {
-  font-family: 'Cinzel', serif;
+  font-family: 'Dosis', sans-serif;
 }
 .text-logo {
   color: rgba(53, 53, 53, 0.89);
@@ -10,7 +10,8 @@ body {
   font-size: 50px;
   padding: 40px 0px;
   text-align: center;
-  font-family: "Holtwood One SC", sans-serif;
+  font-family: 'Patua One', cursive;
+  text-transform: uppercase;
 }
 .text-logo .bi {
   color: #ffd301;
@@ -72,6 +73,9 @@ a:focus {
 }
 .imageItem{
   height: 250px;
+}
+.white{
+  color: #eee;
 }
 
 /* FORMULAIRE ACCUEIL */
